@@ -1,80 +1,52 @@
 # PresentationSizingBackport
 
-A dependency-free Swift package for vertically fitted SwiftUI form sheets, supporting iOS 15+.
+A Swift package that fits a SwiftUI sheet to the height of its content. Supports iOS 15 and later and requires Xcode 16 or later to build.
 
-```swift
-import PresentationSizingBackport
+## Installation
 
-Button("Edit profile") { showingForm = true }
-    .fittedSheet(isPresented: $showingForm, onDismiss: saveDraft) {
-        ProfileForm()
-    }
+In Xcode, choose **File → Add Package Dependencies…** and enter the repository URL.
+
+```text
+https://github.com/AcrylicMadness/PresentationSizingBackport.git
 ```
 
-Add this directory as a local package in Xcode and link the `PresentationSizingBackport` product. For remote installation, push it to your Git repository and add that repository URL as a package dependency. Building requires Xcode 16+ (an iOS 18+ SDK); the deployment target is iOS 15.
+Set the dependency rule to **Branch**, enter `main`, and add the `PresentationSizingBackport` product to your app target. For a local checkout, choose **Add Local…** in the same dialog.
 
-## How it works
+## Usage
 
-- **iOS 18+** uses SwiftUI `.sheet`. In compact width, a measured detent tracks the content height and the content can scroll when it exceeds the available height. In regular width, the sheet uses `.presentationSizing(.form.fitted(horizontal: false, vertical: true))`.
-- **iOS 15–17:** a public-API UIKit custom presentation controller hosting SwiftUI. The form is centered in regular-width layouts (up to 540 points wide), and bottom attached in compact-width layouts. It measures content height at the current width, includes bottom safe area when attached, and caps the frame to the available space. An enclosing scroll view makes oversized content reachable. Docked keyboards reduce the available height.
-
-The wrapper owns presentation, rather than modifying an existing `.sheet`. This avoids relying on SwiftUI's private view-controller hierarchy or private iOS 15 detent APIs. It deliberately covers the vertically fitted form use case, rather than duplicating the entire `PresentationSizing` protocol.
-
-Apple references: [presentationSizing(_:)](https://developer.apple.com/documentation/swiftui/view/presentationsizing(_:)), [fitted(horizontal:vertical:)](https://developer.apple.com/documentation/swiftui/presentationsizing/fitted(horizontal:vertical:)), [custom detents (iOS 16+)](https://developer.apple.com/documentation/uikit/uisheetpresentationcontroller/detent/custom(identifier:resolver:)).
-
-## Content and dismissal
-
-Use a `VStack` or another container with a meaningful ideal height. Apply padding inside your content. Dynamic content and Dynamic Type can change the measured height. Open `Examples/DemoApp.xcodeproj` and run the `PresentationSizingBackportDemo` scheme for an expandable form (`Examples/DemoView.swift`).
-
-For a shared dismissal action:
+Attach `.fittedSheet` to the presenting view and pass a binding that controls whether the sheet is open.
 
 ```swift
-struct ProfileForm: View {
-    @Environment(\.fittedSheetDismiss) private var dismiss
+import SwiftUI
+import PresentationSizingBackport
+
+struct ContentView: View {
+    @State private var showingProfile = false
+    @State private var name = ""
 
     var body: some View {
-        VStack {
-            Text("Profile")
-            Button("Done") { dismiss() }
-        }
-        .padding()
+        Button("Edit profile") { showingProfile = true }
+            .fittedSheet(isPresented: $showingProfile) {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Profile").font(.headline)
+                    TextField("Name", text: $name)
+                        .textFieldStyle(.roundedBorder)
+                    Button("Done") { showingProfile = false }
+                }
+                .padding(24)
+            }
     }
 }
 ```
 
-Setting the presenting binding to `false` also dismisses. `onDismiss` runs once after dismissal. The legacy backdrop dismisses on tap. The presenting SwiftUI environment (including environment objects) is forwarded to the legacy sheet.
+Use a `VStack` or another view with a natural height so the sheet can measure it. Give views such as `Form`, `List`, and `ScrollView` an explicit height when using them as the sheet root.
 
-## Differences from system sheets
+To dismiss from a separate content view, declare `@Environment(\.fittedSheetDismiss) private var dismiss` and call `dismiss()`. Pass `onDismiss` to run code after the sheet closes.
 
-- Native sheets follow Apple's device-specific adaptation rules, including full-screen presentation in compact height where applicable.
-- Compact-width native sheets and legacy sheets supply their own scrolling. Use a plain `VStack` or another finite-height container at the root so the sheet can measure its height. `Form`, `List`, `GeometryReader`, `NavigationView`/`NavigationStack`, and unconstrained `ScrollView` expand to their proposed space.
-- Legacy sheets have a dimmed backdrop and a simple slide transition. They do not replicate native drag-to-dismiss, grabbers, detent interactions, or system sheet stacking. Height changes update layout without a spring animation.
-- Use `fittedSheetDismiss` or the binding on all versions. SwiftUI's standard `dismiss`/`presentationMode` is not wired to the custom presenter. Other sheet-specific SwiftUI modifiers, such as `presentationDetents`, `presentationBackground`, and `interactiveDismissDisabled`, are not supported by the legacy presenter. Do not use it for forms that must prohibit backdrop dismissal.
-- Present one modal at a time from the same view hierarchy. If another modal already occupies the presenter, the legacy presenter will not replace it; a subsequent view update or appearance is needed to retry.
-- Removing the presenting view tears down its sheet without invoking `onDismiss`.
+## Compatibility
 
-## Validation
+On iOS 15–17, the package presents a custom UIKit sheet that hosts your SwiftUI content. On iOS 18 and later, it uses a native SwiftUI sheet with a content-height detent in compact width and fitted form sizing in regular width.
 
-Build for iOS Simulator:
+## Demo
 
-```sh
-xcodebuild -scheme PresentationSizingBackport \
-  -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
-```
-
-Run tests using an installed simulator destination:
-
-```sh
-xcodebuild -scheme PresentationSizingBackport \
-  -destination 'platform=iOS Simulator,name=YOUR_SIMULATOR' test
-```
-
-The package tests cover height bounds. UIKit presentation tests need an application host, so the demo project includes a separate hosted test target. Run it with:
-
-```sh
-xcodebuild -project Examples/DemoApp.xcodeproj \
-  -scheme PresentationSizingBackportDemo \
-  -destination 'platform=iOS Simulator,name=YOUR_SIMULATOR' test
-```
-
-The hosted tests force the legacy presenter on newer systems to exercise growth, shrinkage, overflow, environment forwarding, dismissal, and re-presentation. They also exercise the public API, including content-height changes on compact-width iOS 18+ simulators in portrait. Before release, also verify on iOS 15, 16, and 17 devices/simulators: compact and regular widths, rotation, Dynamic Type, keyboard appearance, and VoiceOver. SDK compatibility and tests on a newer runtime cannot establish older-runtime behavior.
+Open [Examples/DemoApp.xcodeproj](Examples/DemoApp.xcodeproj) and run the `PresentationSizingBackportDemo` scheme. Toggle **Show details** to see the sheet resize.
