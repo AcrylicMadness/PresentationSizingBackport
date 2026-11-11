@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00000000000000000000000F /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000C /* DemoApp.swift */; };
+		000000000000000000000010 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000D /* DemoView.swift */; };
+		000000000000000000000011 /* HostedTests/PresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000E /* HostedTests/PresentationTests.swift */; };
+		48B7959330A4760900AD890C /* PresentationSizingBackport in Frameworks */ = {isa = PBXBuildFile; productRef = 48B7959230A4760900AD890C /* PresentationSizingBackport */; };
+		48B7959530A4760E00AD890C /* PresentationSizingBackport in Frameworks */ = {isa = PBXBuildFile; productRef = 48B7959430A4760E00AD890C /* PresentationSizingBackport */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		000000000000000000000021 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000000000004;
+			remoteInfo = PresentationSizingBackportDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		000000000000000000000006 /* PresentationSizingBackportDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = PresentationSizingBackportDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000007 /* PresentationSizingBackportDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = PresentationSizingBackportDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00000000000000000000000C /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
+		00000000000000000000000D /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		00000000000000000000000E /* HostedTests/PresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostedTests/PresentationTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00000000000000000000000A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7959330A4760900AD890C /* PresentationSizingBackport in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00000000000000000000000B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7959530A4760E00AD890C /* PresentationSizingBackport in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				00000000000000000000000C /* DemoApp.swift */,
+				00000000000000000000000D /* DemoView.swift */,
+				00000000000000000000000E /* HostedTests/PresentationTests.swift */,
+				48B7959130A4760900AD890C /* Frameworks */,
+				000000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000006 /* PresentationSizingBackportDemo.app */,
+				000000000000000000000007 /* PresentationSizingBackportDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48B7959130A4760900AD890C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000000000004 /* PresentationSizingBackportDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000000000017 /* Build configuration list for PBXNativeTarget "PresentationSizingBackportDemo" */;
+			buildPhases = (
+				000000000000000000000008 /* Sources */,
+				00000000000000000000000A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PresentationSizingBackportDemo;
+			packageProductDependencies = (
+				48B7959230A4760900AD890C /* PresentationSizingBackport */,
+			);
+			productName = PresentationSizingBackportDemo;
+			productReference = 000000000000000000000006 /* PresentationSizingBackportDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		000000000000000000000005 /* PresentationSizingBackportDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000000000018 /* Build configuration list for PBXNativeTarget "PresentationSizingBackportDemoTests" */;
+			buildPhases = (
+				000000000000000000000009 /* Sources */,
+				00000000000000000000000B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				000000000000000000000020 /* PBXTargetDependency */,
+			);
+			name = PresentationSizingBackportDemoTests;
+			packageProductDependencies = (
+				48B7959430A4760E00AD890C /* PresentationSizingBackport */,
+			);
+			productName = PresentationSizingBackportDemoTests;
+			productReference = 000000000000000000000007 /* PresentationSizingBackportDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					000000000000000000000005 = {
+						TestTargetID = 000000000000000000000004;
+					};
+				};
+			};
+			buildConfigurationList = 000000000000000000000019 /* Build configuration list for PBXProject "DemoApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 000000000000000000000002;
+			packageReferences = (
+				48B7959030A475F000AD890C /* XCLocalSwiftPackageReference "../../PresentationSizingBackport" */,
+			);
+			productRefGroup = 000000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000000000000000000000004 /* PresentationSizingBackportDemo */,
+				000000000000000000000005 /* PresentationSizingBackportDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00000000000000000000000F /* DemoApp.swift in Sources */,
+				000000000000000000000010 /* DemoView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000000000000000000000009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000000000000000000000011 /* HostedTests/PresentationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		000000000000000000000020 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000000000004 /* PresentationSizingBackportDemo */;
+			targetProxy = 000000000000000000000021 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00000000000000000000001A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PresentationSizingBackportDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		00000000000000000000001B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PresentationSizingBackportDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		00000000000000000000001C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PresentationSizingBackportDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PresentationSizingBackportDemo.app/PresentationSizingBackportDemo";
+			};
+			name = Debug;
+		};
+		00000000000000000000001D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PresentationSizingBackportDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PresentationSizingBackportDemo.app/PresentationSizingBackportDemo";
+			};
+			name = Release;
+		};
+		00000000000000000000001E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_TESTABILITY = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		00000000000000000000001F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_TESTABILITY = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000000000000000000000017 /* Build configuration list for PBXNativeTarget "PresentationSizingBackportDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00000000000000000000001A /* Debug */,
+				00000000000000000000001B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000000000000000000000018 /* Build configuration list for PBXNativeTarget "PresentationSizingBackportDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00000000000000000000001C /* Debug */,
+				00000000000000000000001D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000000000000000000000019 /* Build configuration list for PBXProject "DemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00000000000000000000001E /* Debug */,
+				00000000000000000000001F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		48B7959030A475F000AD890C /* XCLocalSwiftPackageReference "../../PresentationSizingBackport" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../PresentationSizingBackport;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48B7959230A4760900AD890C /* PresentationSizingBackport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48B7959030A475F000AD890C /* XCLocalSwiftPackageReference "../../PresentationSizingBackport" */;
+			productName = PresentationSizingBackport;
+		};
+		48B7959430A4760E00AD890C /* PresentationSizingBackport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48B7959030A475F000AD890C /* XCLocalSwiftPackageReference "../../PresentationSizingBackport" */;
+			productName = PresentationSizingBackport;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 000000000000000000000001 /* Project object */;
+}
